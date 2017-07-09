@@ -1,4 +1,5 @@
 
+//Simple Run Length Encoding using C++ stream classes.
 
 #include "stdafx.h"
 #include <iostream>
