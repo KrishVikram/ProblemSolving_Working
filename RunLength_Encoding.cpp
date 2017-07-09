@@ -11,7 +11,8 @@ void *encode(char *src)
 {
 	int rLen;
 	int len = strlen(src);
-	int i, j = 0, k; int first;
+	int i; 
+	int first;
 	std::ostringstream out;
 	for (i = 0; i < len; i++)
 	{
