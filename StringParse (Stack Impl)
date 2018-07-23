@@ -1,0 +1,101 @@
+
+//An algo to parse the given input string : Numbers (insert to stack), DUP(dup top ele of stack)
+POP(pop top ele of stack), +(pop top two,sum them ,add sum to top), -(pop top two, if 1 >2, add diff to stack, else return -1)
+
+/**Key C++: isdigit(str[i]), isspace(str[i])
+
+
+
+
+
+#include <algorithm>
+#include<stack>
+#include <sstream>
+
+int solution(string &str) 
+{
+    stack<int>mystack;
+    stringstream ints;
+    
+    int length = str.length();
+    for(int i = 0; i < length; i ++)
+    {
+       if(str[i] == 'D')
+        {
+            if(mystack.empty()) {return -1;}
+            else
+            {
+                int temp = mystack.top();
+                mystack.push(temp);
+                i =  i + 2;
+            }
+        }
+        
+        else if(str[i] == 'P')
+        {
+            if(mystack.empty()) {return -1;}
+            else
+            {
+                mystack.pop();
+                i = i+2;
+            }
+        }
+        
+        else if(str.at(i) == '+')
+        {
+            if(mystack.size() < 2){return -1;}
+            else
+            {
+                int temp1 = mystack.top();
+                mystack.pop();
+                int temp2 = mystack.top();
+                mystack.pop();
+                int total = temp1 + temp2;
+                mystack.push(total);
+            }
+        }
+        
+        else if(str.at(i) == '-')
+        {
+            if(mystack.size() < 2){return -1;}
+            else
+            {
+                int temp1 = mystack.top();
+                mystack.pop();
+                int temp2 = mystack.top();
+                mystack.pop();
+                if (temp1 < temp2){return -1;}
+                else
+                {
+                    int diff = temp1 - temp2;
+                    mystack.push(diff);
+                }
+            }
+        }
+        else if (isdigit(str[i]))
+        {
+            int temp;
+            while (!isspace(str[i]))
+            {
+                ints << str[i];
+                i++;
+            }
+            ints >> temp;
+            ints.str("");
+            ints.clear();
+            mystack.push(temp); 
+            cout << "temp:" <<temp<<endl;
+        }
+    }
+    
+    if(!mystack.empty())
+    {
+        return mystack.top();
+    }
+}
+
+int main()
+{
+	std::string test= "5 18 DUP POP - - 7 8 DUP 10 + 11"
+}
+
