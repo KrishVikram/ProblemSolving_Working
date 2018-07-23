@@ -4,10 +4,6 @@ POP(pop top ele of stack), +(pop top two,sum them ,add sum to top), -(pop top tw
 
 /**Key C++: isdigit(str[i]), isspace(str[i])
 
-
-
-
-
 #include <algorithm>
 #include<stack>
 #include <sstream>
